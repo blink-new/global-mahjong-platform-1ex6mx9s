@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Mahjong Platform Dark Theme */
+    --background: 210 24% 8%;
+    --foreground: 210 40% 98%;
+    --card: 210 24% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 210 24% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 152 69% 19%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 24% 16%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 24% 16%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 45 93% 47%;
+    --accent-foreground: 210 24% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 210 24% 16%;
+    --input: 210 24% 16%;
+    --ring: 152 69% 19%;
+    --chart-1: 152 69% 19%;
+    --chart-2: 45 93% 47%;
+    --chart-3: 210 40% 98%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.75rem;
+    
+    /* Custom Mahjong Colors */
+    --mahjong-green: 152 69% 19%;
+    --mahjong-gold: 45 93% 47%;
+    --mahjong-dark: 210 24% 6%;
+    --mahjong-darker: 210 24% 4%;
+    
+    /* Sidebar */
+    --sidebar-background: 210 24% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 152 69% 19%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 24% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 210 24% 16%;
+    --sidebar-ring: 152 69% 19%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: Inter, 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  }
+
+  .mahjong-gradient {
+    background: linear-gradient(135deg, hsl(var(--mahjong-dark)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .mahjong-tile-shadow {
+    box-shadow: 
+      0 4px 8px rgb(0 0 0 / 30%),
+      0 2px 4px rgb(0 0 0 / 20%),
+      inset 0 1px 0 rgb(255 255 255 / 10%);
+  }
+
+  .mahjong-glow {
+    box-shadow: 0 0 20px rgb(212 175 55 / 30%);
+  }
+
+  .mahjong-table-perspective {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  /* Drag and Drop Styles */
+  .tile-dragging {
+    opacity: 50%;
+    transform: rotate(5deg) scale(1.05);
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .tile-drag-over {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgb(212 175 55 / 40%);
+  }
+
+  .drag-drop-zone {
+    transition: all 0.2s ease;
+  }
+
+  .drag-drop-zone.active {
+    background: rgb(212 175 55 / 10%);
+    border: 2px dashed hsl(var(--accent));
+    transform: scale(1.02);
+  }
+
+  /* Smooth tile transitions */
+  .tile-container {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tile-container:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Custom scrollbar for tile area */
+  .tile-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .tile-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 2px;
+  }
+
+  .tile-scroll::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent));
+    border-radius: 2px;
+  }
+
+  .tile-scroll::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent) / 80%);
+  }
+}
